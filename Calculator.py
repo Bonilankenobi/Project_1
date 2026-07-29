@@ -13,6 +13,18 @@ def dodaj():
         # Komunikat, jeśli wpisano coś innego niż liczby
         messagebox.showerror("Błąd", "Wpisz poprawne liczby!")
 
+def odejmij():
+    try:
+        # Pobranie wartości z pól i zamiana na liczby
+        liczba1 = float(entry1.get())
+        liczba2 = float(entry2.get())
+        wynik = liczba1 - liczba2
+        # Wyświetlenie wyniku
+        label_wynik.config(text=f"Wynik: {wynik}")
+    except ValueError:
+        # Komunikat, jeśli wpisano coś innego niż liczby
+        messagebox.showerror("Błąd", "Wpisz poprawne liczby!")
+
 # Tworzenie głównego okna
 root = tk.Tk()
 root.title("Prosty kalkulator")
@@ -33,6 +45,10 @@ entry2.grid(row=1, column=1, padx=10, pady=5)
 # Przycisk "Dodaj"
 przycisk = tk.Button(root, text="Dodaj", command=dodaj)
 przycisk.grid(row=2, column=0, columnspan=2, pady=10)
+
+# Przycisk "Odejmij"
+przycisk = tk.Button(root, text="Odejmij", command=odejmij)
+przycisk.grid(row=2, column=1, columnspan=2, pady=10)
 
 # Miejsce na wynik
 label_wynik = tk.Label(root, text="Wynik: ")
